@@ -1,8 +1,8 @@
-export const helper(msg: string): string {
+export const helper = (msg: string): string => {
   return `helper sayss: ${msg}`;
 }
 
-export function calculateEditDistance(s1: string, s2: string): number {
+export const calculateEditDistance = (s1: string, s2: string): number => {
   const len1 = s1.length;
   const len2 = s2.length;
 
