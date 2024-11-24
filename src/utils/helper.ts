@@ -3,31 +3,31 @@ export const helper = (msg: string): string => {
 }
 
 export const calculateEditDistance = (s1: string, s2: string): number => {
-  const dp: number[][] = Array.from({ length: s1.length + 1 }, () =>
-    Array(s2.length + 1).fill(0)
-  );
+  const len1 = s1.length;
+  const len2 = s2.length;
 
-  for (let i = 0; i <= s1.length; i++) {
-    dp[i][0] = i;
+  let previous = Array(len2 + 1).fill(0);
+  let current = Array(len2 + 1).fill(0);
+
+  for (let j = 0; j <= len2; j++) {
+    previous[j] = j;
   }
 
-  for (let j = 0; j <= s2.length; j++) {
-    dp[0][j] = j;
-  }
-
-  for (let i = 1; i <= s1.length; i++) {
-    for (let j = 1; j <= s2.length; j++) {
+  for (let i = 1; i <= len1; i++) {
+    current[0] = i;
+    for (let j = 1; j <= len2; j++) {
       if (s1[i - 1] === s2[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
+        current[j] = previous[j - 1];
       } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j],     // 削除
-          dp[i][j - 1],     // 挿入
-          dp[i - 1][j - 1]  // 置換
-        ) + 1;
+        current[j] = Math.min(
+          previous[j] + 1,    // 削除
+          current[j - 1] + 1, // 挿入
+          previous[j - 1] + 1 // 置換
+        );
       }
     }
+    [previous, current] = [current, previous];
   }
 
-  return dp[s1.length][s2.length];
+  return previous[len2];
 }
