@@ -17,9 +17,9 @@ export const calculateEditDistance = (s1: string, s2: string): number => {
         current[j] = previous[j - 1];
       } else {
         current[j] = Math.min(
-          previous[j] + 1,    // 削除
-          current[j - 1] + 1, // 挿入
-          previous[j - 1] + 1 // 置換
+          previous[j] + 1,
+          current[j - 1] + 1,
+          previous[j - 1] + 1
         );
       }
     }
