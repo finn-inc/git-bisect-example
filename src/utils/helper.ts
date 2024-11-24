@@ -3,23 +3,20 @@ export const helper = (msg: string): string => {
 }
 
 export const calculateEditDistance = (s1: string, s2: string): number => {
-  const len1 = s1.length;
-  const len2 = s2.length;
-
-  const dp: number[][] = Array.from({ length: len1 + 1 }, () =>
-    Array(len2 + 1).fill(0)
+  const dp: number[][] = Array.from({ length: s1.length + 1 }, () =>
+    Array(s2.length + 1).fill(0)
   );
 
-  for (let i = 0; i <= len1; i++) {
+  for (let i = 0; i <= s1.length; i++) {
     dp[i][0] = i;
   }
 
-  for (let j = 0; j <= len2; j++) {
+  for (let j = 0; j <= s2.length; j++) {
     dp[0][j] = j;
   }
 
-  for (let i = 1; i <= len1; i++) {
-    for (let j = 1; j <= len2; j++) {
+  for (let i = 1; i <= s1.length; i++) {
+    for (let j = 1; j <= s2.length; j++) {
       if (s1[i - 1] === s2[j - 1]) {
         dp[i][j] = dp[i - 1][j - 1];
       } else {
@@ -32,5 +29,5 @@ export const calculateEditDistance = (s1: string, s2: string): number => {
     }
   }
 
-  return dp[len1][len2];
+  return dp[s1.length][s2.length];
 }
