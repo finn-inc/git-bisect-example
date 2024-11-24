@@ -2,7 +2,7 @@ import { calculateEditDistance, helper } from '../helper';
 
 describe('helper', () => {
   it('helper', () => {
-    expect(helper('hi')).toBe('helper sayss: hi');
+    expect(helper('hi')).toBe('helper says: hi');
   })
 
   it('calculateEditDistance should return correct edit distance', () => {
