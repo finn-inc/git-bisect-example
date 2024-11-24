@@ -1,0 +1,17 @@
+{
+  "name": "git-bisect-example",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Sample project for git bisect tutorial with Node.js, TypeScript, and Jest",
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "jest": "^27.4.3",
+    "ts-jest": "^27.0.7",
+    "@types/jest": "^27.0.2"
+  }
+}
