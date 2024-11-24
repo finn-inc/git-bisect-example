@@ -1,5 +1,5 @@
 export const helper = (msg: string): string => {
-  return `helper sayss: ${msg}`;
+  return `helper says: ${msg}`;
 }
 
 export const calculateEditDistance = (s1: string, s2: string): number => {
